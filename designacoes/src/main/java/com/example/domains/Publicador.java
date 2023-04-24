@@ -2,8 +2,6 @@ package com.example.domains;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -25,13 +23,13 @@ public class Publicador {
     private Enum sexo;
 
     @Column
-    private Enum batismo;
+    private Boolean flBatismo;
 
     @Column
     private Enum perfil;
 
     @Column
-    private Enum pregacao;
+    private Enum publicadorTipo;
 
     @Column
     private String observacao;

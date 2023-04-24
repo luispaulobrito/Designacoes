@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.domains;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -22,8 +22,6 @@ public class Publicador {
     private String perfil;
     @Column
     private String pregacao;
-    @Column
-    private String dificuldade;
     @Column
     private String observacao;
 }

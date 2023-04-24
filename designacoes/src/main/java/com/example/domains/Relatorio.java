@@ -10,30 +10,30 @@ public class Relatorio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_publicador")
     public Publicador publicador;
 
     @Column
-    private Integer mes;
+    private Long mes;
 
     @Column
-    private Integer ano;
+    private Long ano;
 
     @Column
-    private Integer publicacoes;
+    private Long publicacoes;
 
     @Column
-    private Integer videos;
+    private Long videos;
 
     @Column
-    private Integer horas;
+    private Long horas;
 
     @Column
-    private Integer revisitas;
+    private Long revisitas;
 
     @Column
-    private Integer estudos;
+    private Long estudos;
 }

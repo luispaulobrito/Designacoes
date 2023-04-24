@@ -5,23 +5,34 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Publicador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+
+    @OneToMany
+    private List<Relatorio> relatorios;
+
     @Column(nullable = false, length = 150)
     private String nome;
+
     @Column
-    private String sexo;
+    private Enum sexo;
+
     @Column
-    private Double batismo;
+    private Enum batismo;
+
     @Column
-    private String perfil;
+    private Enum perfil;
+
     @Column
-    private String pregacao;
+    private Enum pregacao;
+
     @Column
     private String observacao;
 }

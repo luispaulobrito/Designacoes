@@ -1,9 +1,8 @@
-package com.example.rest;
+package com.example.designacoes.rest;
 
-import com.example.domains.Publicador;
-import com.example.repository.PublicadorRepository;
+import com.example.designacoes.domains.Publicador;
+import com.example.designacoes.repository.PublicadorRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

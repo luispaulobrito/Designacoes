@@ -1,4 +1,4 @@
-package com.example.domains;
+package com.example.designacoes.domains;
 
 import jakarta.persistence.*;
 import lombok.Data;

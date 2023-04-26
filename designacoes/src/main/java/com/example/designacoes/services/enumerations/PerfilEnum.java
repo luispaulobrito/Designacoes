@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum PerfilEnum {
     SM("SERVO MINISTERIAL"),
-    AN("ANCIAO");
+    AN("ANCIAO"),
+    NP("NÃO POSSUI");
 
     private String value;
 }

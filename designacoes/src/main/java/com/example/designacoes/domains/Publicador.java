@@ -22,9 +22,6 @@ public class Publicador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<Relatorio> relatorios;
-
     @Column(nullable = false, length = 150)
     private String nome;
 

@@ -3,10 +3,12 @@ package com.example.designacoes.domains;
 import com.example.designacoes.services.enumerations.PerfilEnum;
 import com.example.designacoes.services.enumerations.PublicadorTipoEnum;
 import com.example.designacoes.services.enumerations.SexoEnum;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @Getter

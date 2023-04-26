@@ -3,10 +3,10 @@ package com.example.designacoes.services;
 import com.example.designacoes.repository.PublicadorRepository;
 import com.example.designacoes.services.dto.PublicadorDTO;
 import com.example.designacoes.services.mapper.PublicadorMapper;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service

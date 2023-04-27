@@ -6,50 +6,47 @@ import com.example.designacoes.services.PublicadorService;
 import com.example.designacoes.services.dto.PublicadorDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/publicador")
+@RequestMapping("/api/publicadores")
 @RequiredArgsConstructor
 public class PublicadorController {
 
     private final PublicadorRepository repository;
     private final PublicadorService service;
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Publicador salvar(@RequestBody Publicador publicador){
-        return repository.save(publicador);
-    }
-
     @GetMapping("{id}")
-    public Publicador acharPorId(@PathVariable Long id){
-        return repository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public ResponseEntity<PublicadorDTO> obterPorId(@PathVariable Long id){
+        return ResponseEntity.ok(service.obterPorId(id));
     }
 
     @GetMapping
-    public List<PublicadorDTO> obterTodos(){
-        return service.listarPublicadores();
+    public ResponseEntity<List<PublicadorDTO>>  listarPublicadores(){
+        return ResponseEntity.ok(service.listarPublicadores());
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<PublicadorDTO> salvarPublicador(@Valid @RequestBody PublicadorDTO publicador) throws URISyntaxException {
+        return ResponseEntity.created(new URI("/api/publicadores")).body(service.salvarPublicador(publicador));
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id){
-        repository.findById(id).map( publicador -> {
-                    repository.delete(publicador);
-                    return Void.TYPE;
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Void> removerPublicador(@PathVariable Long id){
+        service.removerPublicador(id);
+        return ResponseEntity.ok().build();
     }
     @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void atualizar(@PathVariable Long id, @RequestBody Publicador publicadorAtualizado){
-        repository.findById(id).map( publicador -> {
-            publicadorAtualizado.setId(publicador.getId());
-            return repository.save(publicadorAtualizado);
-        })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Void> atualizarPublicador(@PathVariable Long id, @RequestBody PublicadorDTO publicadorAtualizado){
+        service.atualizarPublicador(id, publicadorAtualizado);
+        return ResponseEntity.ok().build();
     }
 }

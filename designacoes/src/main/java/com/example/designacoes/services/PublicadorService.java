@@ -1,10 +1,13 @@
 package com.example.designacoes.services;
 
+import com.example.designacoes.domains.Publicador;
 import com.example.designacoes.repository.PublicadorRepository;
 import com.example.designacoes.services.dto.PublicadorDTO;
 import com.example.designacoes.services.mapper.PublicadorMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,4 +22,33 @@ public class PublicadorService {
     public List<PublicadorDTO> listarPublicadores(){
         return publicadorMapper.toDto(publicadorRepository.findAll());
     }
+
+    public PublicadorDTO obterPorId(Long id){
+        return publicadorMapper.toDto(publicadorRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+    }
+
+    public PublicadorDTO salvarPublicador(PublicadorDTO publicadorDTO){
+        Publicador publicador = publicadorRepository.save(publicadorMapper.toEntity(publicadorDTO));
+        return publicadorMapper.toDto(publicador);
+    }
+
+    public void removerPublicador(Long id){
+        publicadorRepository.findById(id).map( publicador -> {
+                    publicadorRepository.delete(publicador);
+                    return Void.TYPE;
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    public PublicadorDTO atualizarPublicador(Long id, PublicadorDTO publicadorDTO){
+        return publicadorRepository.findById(id)
+                .map(publicador -> {
+                    Publicador publicadorAtualizado = publicadorMapper.toEntity(publicadorDTO);
+                    publicadorAtualizado.setId(publicador.getId());
+                    return publicadorMapper.toDto(publicadorRepository.save(publicadorAtualizado));
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 }

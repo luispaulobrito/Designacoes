@@ -1,6 +1,5 @@
 package com.example.designacoes.rest;
 
-import com.example.designacoes.domains.Publicador;
 import com.example.designacoes.repository.PublicadorRepository;
 import com.example.designacoes.services.PublicadorService;
 import com.example.designacoes.services.dto.PublicadorDTO;
@@ -9,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.net.URI;

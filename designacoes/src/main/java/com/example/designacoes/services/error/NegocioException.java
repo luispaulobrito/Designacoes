@@ -1,6 +1,6 @@
 package com.example.designacoes.services.error;
 
-public class NegocioException extends Exception{
+public class NegocioException extends RuntimeException{
     private String titulo;
     private String mensagem;
 

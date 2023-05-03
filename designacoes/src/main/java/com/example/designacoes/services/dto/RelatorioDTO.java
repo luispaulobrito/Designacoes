@@ -13,7 +13,7 @@ public class RelatorioDTO {
 
     private Long id;
 
-    public Long idPublicador;
+    private Long idPublicador;
 
     private Long mes;
 

@@ -13,15 +13,26 @@ import org.springframework.web.bind.annotation.*;
 public class RelatorioController {
     private final RelatorioService relatorioService;
 
+    @GetMapping("{relatorioId}")
+    public ResponseEntity<RelatorioDTO> obterRelatorioPorId(@PathVariable Long relatorioId){
+        return ResponseEntity.ok(relatorioService.obterPorId(relatorioId));
+    }
+
     @PostMapping()
-    public ResponseEntity<RelatorioDTO> salvarRelatorioParaPublicador(@RequestBody RelatorioDTO relatorioDTO) throws NegocioException {
+    public ResponseEntity<RelatorioDTO> salvarRelatorio(@RequestBody RelatorioDTO relatorioDTO) throws NegocioException {
         RelatorioDTO novoRelatorioDTO = relatorioService.salvarRelatorio(relatorioDTO);
         return ResponseEntity.ok(novoRelatorioDTO);
     }
 
     @DeleteMapping("{relatorioId}")
-    public ResponseEntity<Void> removerRelatorioDePublicador(@PathVariable Long relatorioId) throws NegocioException{
+    public ResponseEntity<Void> removerRelatorio(@PathVariable Long relatorioId) throws NegocioException{
         relatorioService.removerRelatorio(relatorioId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("{relatorioId}")
+    public ResponseEntity<RelatorioDTO> atualizarRelatorio(@PathVariable Long relatorioId, @RequestBody RelatorioDTO relatorioAtualizado) throws NegocioException{
+        relatorioService.atualizarRelatorio(relatorioId, relatorioAtualizado);
         return ResponseEntity.ok().build();
     }
 }

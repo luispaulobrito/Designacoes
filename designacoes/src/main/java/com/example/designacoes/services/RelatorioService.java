@@ -22,6 +22,11 @@ public class RelatorioService {
     private final RelatorioMapper relatorioMapper;
     private final PublicadorRepository publicadorRepository;
 
+    public RelatorioDTO obterPorId(Long id) throws NegocioException{
+        return relatorioMapper.toDto(relatorioRepository.findById(id)
+                .orElseThrow(() -> new NegocioException(ConstantesUtil.ERROR_TITLE,ConstantesUtil.RELATORIO_NAO_ENCONTRADO)));
+    }
+
     public RelatorioDTO salvarRelatorio(RelatorioDTO relatorioDTO) throws NegocioException {
         Publicador publicador = publicadorRepository.findById(relatorioDTO.getIdPublicador())
                 .orElseThrow(() -> new NegocioException(ConstantesUtil.ERROR_TITLE, ConstantesUtil.PESSOA_NAO_ENCONTRADA));
@@ -35,5 +40,15 @@ public class RelatorioService {
         Relatorio relatorio = relatorioRepository.findById(id)
                 .orElseThrow(() -> new NegocioException(ConstantesUtil.ERROR_TITLE, ConstantesUtil.RELATORIO_NAO_ENCONTRADO));
         relatorioRepository.delete(relatorio);
+    }
+
+    public void atualizarRelatorio(Long id, RelatorioDTO relatorioDTO){
+        relatorioRepository.findById(id)
+                .map(relatorio -> {
+                    Relatorio relatorioAtualizado = relatorioMapper.toEntity(relatorioDTO);
+                    relatorioAtualizado.setId(relatorio.getId());
+                    return relatorioMapper.toDto(relatorioRepository.save(relatorioAtualizado));
+                })
+                .orElseThrow(() -> new NegocioException(ConstantesUtil.ERROR_TITLE,ConstantesUtil.RELATORIO_NAO_ENCONTRADO));
     }
 }

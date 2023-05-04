@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum PublicadorTipoEnum {
+public enum TipoPublicadorEnum {
     PB("Publicador"),
     PA("Pioneiro Auxiliar"),
     PI("Pioneiro Auxiliar Indeterminado"),

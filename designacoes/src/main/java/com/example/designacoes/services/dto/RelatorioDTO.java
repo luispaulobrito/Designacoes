@@ -1,6 +1,5 @@
 package com.example.designacoes.services.dto;
 
-import com.example.designacoes.domains.Publicador;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,7 @@ public class RelatorioDTO {
 
     private Long id;
 
-    public Long idPublicador;
+    private Long idPublicador;
 
     private Long mes;
 

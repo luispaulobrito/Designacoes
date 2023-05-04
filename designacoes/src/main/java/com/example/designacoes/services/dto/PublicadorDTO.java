@@ -1,8 +1,8 @@
 package com.example.designacoes.services.dto;
 
 import com.example.designacoes.services.enumerations.PerfilEnum;
-import com.example.designacoes.services.enumerations.PublicadorTipoEnum;
 import com.example.designacoes.services.enumerations.SexoEnum;
+import com.example.designacoes.services.enumerations.TipoPublicadorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class PublicadorDTO {
 
     private PerfilEnum perfil;
 
-    private PublicadorTipoEnum publicadorTipo;
+    private TipoPublicadorEnum publicadorTipo;
 
     private String observacao;
 }

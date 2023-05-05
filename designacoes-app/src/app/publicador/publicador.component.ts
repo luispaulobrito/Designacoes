@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicadorService } from '../publicador.service';
 import { Publicador } from './publicador';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-publicador',
@@ -8,19 +9,34 @@ import { Publicador } from './publicador';
   styleUrls: ['./publicador.component.css']
 })
 export class PublicadorComponent implements OnInit {
+
+  formulario: FormGroup;
+  publicadores: Publicador[] = [];
+
   constructor(
-    private service : PublicadorService
-  ){}
+    private service : PublicadorService,
+    private fb : FormBuilder
+  ){
+    this.formulario = this.fb.group({});
+  }
 
   ngOnInit(): void {
-      const p : Publicador = new Publicador();
-      p.nome = "Luis Paulo";
-      p.flBatismo = true;
-      p.sexo = "M";
-      p.perfil = "SM";
-      p.publicadorTipo = "PA";  
+      this.formulario = this.fb.group({
+        nome : ['', Validators.required],
+        sexo : ['', Validators.required],
+        flBatismo : ['', Validators.required],
+        perfil : ['', Validators.required],
+        publicadorTipo : ['', Validators.required],
+        observacao : ['', Validators.required],
+      }) 
+  }
 
-      this.service.save(p).subscribe(resposta => 
-        console.log(resposta))
+  submit(){
+    const formValues = this.formulario.value
+    const publicador : Publicador = new Publicador(formValues.nome, formValues.sexo, formValues.flBatismo, formValues.perfil, formValues.publicadorTipo, formValues.observacao)
+    this.service.save(publicador).subscribe(resposta => {
+      this.publicadores.push(resposta);
+      console.log(this.publicadores);
+    })
   }  
 }

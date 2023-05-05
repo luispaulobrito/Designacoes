@@ -1,8 +1,8 @@
 package com.example.designacoes.domains;
 
 import com.example.designacoes.services.enumerations.PerfilEnum;
-import com.example.designacoes.services.enumerations.PublicadorTipoEnum;
 import com.example.designacoes.services.enumerations.SexoEnum;
+import com.example.designacoes.services.enumerations.TipoPublicadorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +37,7 @@ public class Publicador {
 
     @Column(name = "publicadorTipo", nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
-    private PublicadorTipoEnum publicadorTipo;
+    private TipoPublicadorEnum publicadorTipo;
 
     @Column
     private String observacao;

@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +24,7 @@ import { PublicadorComponent } from './publicador/publicador.component';
     MatIconModule,
     MatInputModule,
     MatRadioModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [],

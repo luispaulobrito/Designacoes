@@ -12,6 +12,7 @@ export class PublicadorComponent implements OnInit {
 
   formulario: FormGroup;
   publicadores: Publicador[] = [];
+  colunas = ["id","nome","sexo","flBatismo","perfil","publicadorTipo","observacao"]
 
   constructor(
     private service : PublicadorService,

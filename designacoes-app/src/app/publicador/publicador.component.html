@@ -5,56 +5,113 @@
     <span>Publicadores</span>
 </mat-toolbar>
 
-<form [formGroup]="formulario" (ngSubmit)="submit()" class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>Nome: </mat-label>
-        <input formControlName="nome" matInput>
-    </mat-form-field>
-
-    <p>
-    <label id="example-radio-group-label">Sexo: </label>
-    <mat-radio-group formControlName="sexo" aria-label="Sexo:">
-        <mat-radio-button value="M">Masculino</mat-radio-button>
-        <mat-radio-button value="F">Feminino</mat-radio-button>
-      </mat-radio-group>
-    </p>
+<mat-tab-group animationDuration="0ms">
+<mat-tab>
+    <ng-template mat-tab-label>
+        Todos
+    </ng-template>
     
-    <p>
-        <label id="example-radio-group-label">Batizado: </label>
-        <mat-radio-group formControlName="flBatismo" aria-label="Batizado:">
-            <mat-radio-button value="true">Sim</mat-radio-button>
-            <mat-radio-button value="false">Não</mat-radio-button>
-        </mat-radio-group>
-    </p>
+    <mat-card>
+            <table mat-table [dataSource]="publicadores" class="example-full-width">
+    
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.id}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.nome}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="sexo">
+                    <th mat-header-cell *matHeaderCellDef>Sexo</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.sexo}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="flBatismo">
+                    <th mat-header-cell *matHeaderCellDef>Batismo</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.flBatismo}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="perfil">
+                    <th mat-header-cell *matHeaderCellDef>Perfil</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.perfil}}</td>
+                </ng-container>
+                
+                <ng-container matColumnDef="publicadorTipo">
+                    <th mat-header-cell *matHeaderCellDef>Publicador Tipo</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.publicadorTipo}}</td>
+                </ng-container>
+                
+                <ng-container matColumnDef="observacao">
+                    <th mat-header-cell *matHeaderCellDef>Observacao</th>
+                    <td mat-cell *matCellDef="let publicador">{{publicador.observacao}}</td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunas;"></tr>                               
+            </table>
+    </mat-card>
+</mat-tab>
+<mat-tab>
+    <ng-template mat-tab-label>
+        Novo
+    </ng-template>
 
-    <p>
-        <label id="example-radio-group-label">Perfil: </label>
-        <mat-radio-group formControlName="perfil" aria-label="Perfil:">
-            <mat-radio-button value="SM">Servo Ministerial</mat-radio-button>
-            <mat-radio-button value="AN">Ancião</mat-radio-button>
-            <mat-radio-button value="NP">Não Possui</mat-radio-button>
-        </mat-radio-group>
-    </p>
-    <p>
-        <label id="example-radio-group-label">Tipo: </label>
-        <mat-radio-group formControlName="publicadorTipo" aria-label="Tipo:">
-            <mat-radio-button value="PB">Publicador</mat-radio-button>
-            <mat-radio-button value="PA">Pioneiro Auxiliar</mat-radio-button>
-            <mat-radio-button value="PI">Pioneiro Auxiliar Indeterminado</mat-radio-button>
-            <mat-radio-button value="PR">Pioneiro Regular</mat-radio-button>
-        </mat-radio-group>
-    </p>
+    <mat-card class="full-width">
+        <mat-card-title>Novo Publicador</mat-card-title>
+        <form [formGroup]="formulario" (ngSubmit)="submit()" class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nome: </mat-label>
+                <input formControlName="nome" matInput>
+            </mat-form-field>
 
-    <p>
-        <mat-form-field class="example-full-width">
-            <mat-label>Observação</mat-label>
-            <textarea matInput formControlName="observacao"></textarea>
-        </mat-form-field>
-    </p>
+            <p>
+            <label id="example-radio-group-label">Sexo: </label>
+            <mat-radio-group formControlName="sexo" aria-label="Sexo:">
+                <mat-radio-button value="M">Masculino</mat-radio-button>
+                <mat-radio-button value="F">Feminino</mat-radio-button>
+            </mat-radio-group>
+            </p>
+            
+            <p>
+                <label id="example-radio-group-label">Batizado: </label>
+                <mat-radio-group formControlName="flBatismo" aria-label="Batizado:">
+                    <mat-radio-button value="true">Sim</mat-radio-button>
+                    <mat-radio-button value="false">Não</mat-radio-button>
+                </mat-radio-group>
+            </p>
 
-  <div class="example-button-row">
-    <button mat-flat-button color="primary">Cadastrar</button>
-  </div>
+            <p>
+                <label id="example-radio-group-label">Perfil: </label>
+                <mat-radio-group formControlName="perfil" aria-label="Perfil:">
+                    <mat-radio-button value="SM">Servo Ministerial</mat-radio-button>
+                    <mat-radio-button value="AN">Ancião</mat-radio-button>
+                    <mat-radio-button value="NP">Não Possui</mat-radio-button>
+                </mat-radio-group>
+            </p>
+            <p>
+                <label id="example-radio-group-label">Tipo: </label>
+                <mat-radio-group formControlName="publicadorTipo" aria-label="Tipo:">
+                    <mat-radio-button value="PB">Publicador</mat-radio-button>
+                    <mat-radio-button value="PA">Pioneiro Auxiliar</mat-radio-button>
+                    <mat-radio-button value="PI">Pioneiro Auxiliar Indeterminado</mat-radio-button>
+                    <mat-radio-button value="PR">Pioneiro Regular</mat-radio-button>
+                </mat-radio-group>
+            </p>
 
-</form>
-  
+            <p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Observação</mat-label>
+                    <textarea matInput formControlName="observacao"></textarea>
+                </mat-form-field>
+            </p>
+
+            <div class="button-row">
+                <button mat-flat-button color="primary">Cadastrar</button>
+            </div>
+        </form>
+    </mat-card>
+</mat-tab>
+</mat-tab-group>

@@ -12,7 +12,7 @@ export class PublicadorComponent implements OnInit {
 
   formulario: FormGroup;
   publicadores: Publicador[] = [];
-  colunas = ["id","nome","sexo","flBatismo","perfil","publicadorTipo","observacao"]
+  colunas = ['id','nome','sexo','flBatismo','perfil','publicadorTipo','observacao']
 
   constructor(
     private service : PublicadorService,
@@ -22,14 +22,25 @@ export class PublicadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.formulario = this.fb.group({
-        nome : ['', Validators.required],
+    this.montarFormulario();
+    this.listarPublicadores();
+  }
+
+  montarFormulario(){
+    this.formulario = this.fb.group({
+      nome : ['', Validators.required],
         sexo : ['', Validators.required],
         flBatismo : ['', Validators.required],
         perfil : ['', Validators.required],
         publicadorTipo : ['', Validators.required],
         observacao : ['', Validators.required],
-      }) 
+    })
+  }
+
+  listarPublicadores(){
+    this.service.list().subscribe(response => {
+      this.publicadores = response;
+    })
   }
 
   submit(){

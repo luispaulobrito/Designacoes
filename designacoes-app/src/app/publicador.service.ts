@@ -18,4 +18,8 @@ export class PublicadorService {
   save (publicador : Publicador) : Observable<Publicador>{
     return this.http.post<Publicador>(this.url, publicador)
   }
+
+  list() : Observable<Publicador[]>{
+    return this.http.get<any>(this.url);
+  }
 }

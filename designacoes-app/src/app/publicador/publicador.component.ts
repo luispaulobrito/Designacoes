@@ -12,7 +12,7 @@ export class PublicadorComponent implements OnInit {
 
   formulario: FormGroup;
   publicadores: Publicador[] = [];
-  colunas = ['id','nome','sexo','flBatismo','perfil','publicadorTipo','observacao']
+  colunas = ['id','nome','sexo','flBatismo','perfil','publicadorTipo','observacao', 'acoes']
 
   constructor(
     private service : PublicadorService,
@@ -50,5 +50,12 @@ export class PublicadorComponent implements OnInit {
       let lista : Publicador[] = [... this.publicadores, resposta]
       this.publicadores = lista;
     })
-  }  
+  }
+  
+  excluir(publicador: Publicador){
+    this.service.deletar(publicador).subscribe(() => {
+      this.publicadores = this.publicadores.filter(p => p !== publicador);
+    });
+}
+
 }

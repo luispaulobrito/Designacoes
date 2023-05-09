@@ -22,4 +22,9 @@ export class PublicadorService {
   list() : Observable<Publicador[]>{
     return this.http.get<any>(this.url);
   }
+
+  deletar(publicador: Publicador): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${publicador.id}`);
+  }
+
 }

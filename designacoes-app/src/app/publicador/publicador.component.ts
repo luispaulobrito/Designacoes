@@ -47,8 +47,8 @@ export class PublicadorComponent implements OnInit {
     const formValues = this.formulario.value
     const publicador : Publicador = new Publicador(formValues.nome, formValues.sexo, formValues.flBatismo, formValues.perfil, formValues.publicadorTipo, formValues.observacao)
     this.service.save(publicador).subscribe(resposta => {
-      this.publicadores.push(resposta);
-      console.log(this.publicadores);
+      let lista : Publicador[] = [... this.publicadores, resposta]
+      this.publicadores = lista;
     })
   }  
 }

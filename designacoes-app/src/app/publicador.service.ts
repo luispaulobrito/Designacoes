@@ -27,4 +27,8 @@ export class PublicadorService {
     return this.http.delete<any>(`${this.url}/${publicador.id}`);
   }
 
+  atualizar(publicador : Publicador) : Observable<Publicador>{
+    return this.http.put<Publicador>(`${this.url}/${publicador.id}`, publicador);
+}
+
 }

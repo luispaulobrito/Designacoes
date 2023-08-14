@@ -1,0 +1,34 @@
+
+<div class="container mt-3">
+    <h3>Lista de Publicadores</h3>
+
+    <div class="form-outline mt-4">
+        <input type="search" class="form-control" id="datatable-search-input" placeholder="Busca" [(ngModel)]="termoBusca" (input)="filtrarPublicadores()">
+    </div>
+      
+    <div class="mt-4">
+        <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Batismo</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Tipo de Publicador</th>
+                <th scope="col">Observação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let publicador of publicadores">
+                <td>{{ publicador.nome }}</td>
+                <td>{{ publicador.sexo === 'M' ? 'Masculino' : 'Feminino'  }}</td>
+                <td>{{ publicador.flBatismo === true ? 'Sim' : 'Não'  }}</td>
+                <td>{{ traduzirPerfil(publicador.perfil) }}</td>
+                <td>{{ traduzirPublicador(publicador.publicadorTipo) }}</td>
+                <td>{{ publicador.observacao }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+

@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicadoresModule } from './publicadores/publicadores.module';
-import { PublicadoresService } from './publicadores.service';
+import { PublicadoresService } from './shared/services/publicadores.service';
 
 @NgModule({
   declarations: [

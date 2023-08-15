@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Publicador } from '../publicador';
-import { PublicadoresService } from 'src/app/publicadores.service';
+import { Publicador } from '../../shared/domain/publicador';
+import { PublicadoresService } from 'src/app/shared/services/publicadores.service';
 
 @Component({
   selector: 'app-publicadores-lista',

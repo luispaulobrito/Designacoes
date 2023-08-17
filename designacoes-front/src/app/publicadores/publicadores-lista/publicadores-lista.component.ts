@@ -35,9 +35,15 @@ export class PublicadoresListaComponent {
         }
       );
     } else {
-      this.publicadores = this.publicadores.filter(publicador =>
-        publicador.nome.toLowerCase().includes(this.termoBusca.toLowerCase())
+      this.publicadorService.getPublicadoresFiltrados(this.termoBusca).subscribe(
+        (data: Publicador[]) => {
+          this.publicadores = data;
+        },
+        (error) => {
+          console.error(error);
+        }
       );
     }
   }
+  
 }

@@ -30,6 +30,11 @@ public class PublicadorController {
     public ResponseEntity<List<PublicadorDTO>>  listarPublicadores(){
         return ResponseEntity.ok(service.listarPublicadores());
     }
+    @GetMapping("/filtro")
+    public ResponseEntity<List<PublicadorDTO>> filtrarPublicadoresPorNome(@RequestParam String termo) {
+        List<PublicadorDTO> publicadoresFiltrados = service.filtrarPublicadoresPorNome(termo);
+        return ResponseEntity.ok(publicadoresFiltrados);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,4 +53,5 @@ public class PublicadorController {
         service.atualizarPublicador(id, publicadorAtualizado);
         return ResponseEntity.ok().build();
     }
+
 }

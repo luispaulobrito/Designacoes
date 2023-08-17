@@ -26,6 +26,10 @@ public class PublicadorService {
         return publicadorMapper.toDto(publicadorRepository.findById(id)
                 .orElseThrow(() -> new NegocioException(ConstantesUtil.ERROR_TITLE,ConstantesUtil.PESSOA_NAO_ENCONTRADA)));
     }
+    public List<PublicadorDTO> filtrarPublicadoresPorNome(String termo) {
+        List<Publicador> publicadoresFiltrados = publicadorRepository.findByNomeContainingIgnoreCase(termo);
+        return publicadorMapper.toDto(publicadoresFiltrados);
+    }
 
     public PublicadorDTO salvarPublicador(PublicadorDTO publicadorDTO){
         Publicador publicador = publicadorRepository.save(publicadorMapper.toEntity(publicadorDTO));

@@ -17,4 +17,9 @@ export class PublicadoresService {
   getPublicadores() : Observable<Publicador[]>{
     return this.http.get<Publicador[]>('http://localhost:8080/api/publicadores');
   }  
+
+  getPublicadoresFiltrados(termo: string): Observable<Publicador[]> {
+    return this.http.get<Publicador[]>(`http://localhost:8080/api/publicadores/filtro?termo=${termo}`);
+  }
+
 }

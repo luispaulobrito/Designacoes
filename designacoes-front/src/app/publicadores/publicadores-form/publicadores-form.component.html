@@ -59,13 +59,10 @@
             <textarea class="form-control" id="observacao" name="observacao" rows="1" [(ngModel)]="publicador.observacao"></textarea>
         </div>
 
-        
-        <div class="alert alert-success mt-3" role="alert" *ngIf="success == true">
-            Publicador cadastrado com sucesso!
-        </div>
-        
-        <div class="alert alert-danger mt-3" role="alert" *ngFor="let erro of errors">
-            {{ erro }}
+        <app-alerta-sucesso *ngIf="success == true" [mensagem]="'Publicador cadastrado com sucesso!'"></app-alerta-sucesso>
+
+        <div  *ngFor="let erro of errors">
+            <app-alerta-erro [mensagem]="erro"></app-alerta-erro>
         </div>
 
         <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-2">Enviar</button>

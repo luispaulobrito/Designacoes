@@ -21,10 +21,10 @@
             <tbody>
               <tr *ngFor="let publicador of publicadores">
                 <td>{{ publicador.nome }}</td>
-                <td>{{ publicador.sexo === 'M' ? 'Masculino' : 'Feminino'  }}</td>
-                <td>{{ publicador.flBatismo === true ? 'Sim' : 'Não'  }}</td>
-                <td>{{ traduzirPerfil(publicador.perfil) }}</td>
-                <td>{{ traduzirPublicador(publicador.publicadorTipo) }}</td>
+                <td>{{ publicador.sexo | traduzirGenero  }}</td>
+                <td>{{ publicador.flBatismo | batismo  }}</td>
+                <td>{{ publicador.perfil | perfil }}</td>
+                <td>{{ publicador.publicadorTipo | publicadorTipo }}</td>
                 <td>{{ publicador.observacao }}</td>
               </tr>
             </tbody>

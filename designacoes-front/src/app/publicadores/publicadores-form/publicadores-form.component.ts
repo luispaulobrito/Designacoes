@@ -18,9 +18,9 @@ export class PublicadoresFormComponent {
 
   onSubmit(){
     this.service.salvar(this.publicador).subscribe( response => {this.success=true}, error => {
-      console.log(error);
       this.errors = error.error.error;
-      console.log(error.error.error);
+      // console.log(error);
+      // console.log(error.error.error);
       
     })
   }

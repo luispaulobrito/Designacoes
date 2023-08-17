@@ -9,13 +9,13 @@ import { PublicadoresService } from './shared/services/publicadores.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    PublicadoresModule
+    PublicadoresModule,
   ],
   providers: [
     PublicadoresService

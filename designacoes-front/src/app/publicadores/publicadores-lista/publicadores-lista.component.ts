@@ -40,33 +40,4 @@ export class PublicadoresListaComponent {
       );
     }
   }
-
-  traduzirPerfil(perfil: string): string {
-    switch (perfil) {
-      case 'AN':
-        return 'Ancião';
-      case 'SM':
-        return 'Servo Ministerial';
-      case 'NP':
-        return '-';
-      default:
-        return perfil;
-    }
-  }
-
-  traduzirPublicador(publicador: string): string {
-    switch (publicador) {
-      case 'PB':
-        return 'Publicador';
-      case 'PA':
-        return 'Pioneiro Auxiliar';
-      case 'PI':
-        return 'Pioneiro Auxiliar Indeterminado';
-      case 'PR':
-        return 'Pioneiro Regular';
-      default:
-        return publicador;
-    }
-  }
-  
 }

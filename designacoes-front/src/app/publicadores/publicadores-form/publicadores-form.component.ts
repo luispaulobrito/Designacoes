@@ -11,6 +11,17 @@ export class PublicadoresFormComponent {
   publicador: Publicador;
   success: boolean = false;  
   errors: string[] = [];
+  publicadorTipos = [
+    { value: 'PB', label: 'Publicador' },
+    { value: 'PA', label: 'Pioneiro Auxiliar' },
+    { value: 'PI', label: 'Pioneiro Auxiliar Indeterminado' },
+    { value: 'PR', label: 'Pioneiro Regular' }
+  ];
+  publicadorPerfis = [
+    { value: 'SM', label: 'Servo Ministerial' },
+    { value: 'AN', label: 'Ancião' },
+    { value: 'NP', label: 'Não Possui' }
+  ];
 
   constructor(private service: PublicadoresService){
     this.publicador = new Publicador("","",false,"","","");

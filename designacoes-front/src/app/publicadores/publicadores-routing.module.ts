@@ -5,6 +5,7 @@ import { PublicadoresListaComponent } from './publicadores-lista/publicadores-li
 
 const routes: Routes = [
   {path: 'publicadores-form', component: PublicadoresFormComponent},
+  {path: 'publicadores-form/:id', component: PublicadoresFormComponent},
   {path: 'publicadores-lista', component: PublicadoresListaComponent}
 ];
 

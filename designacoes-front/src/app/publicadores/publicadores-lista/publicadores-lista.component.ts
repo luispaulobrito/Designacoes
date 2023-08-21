@@ -10,6 +10,10 @@ import { PublicadoresService } from 'src/app/shared/services/publicadores.servic
 export class PublicadoresListaComponent {
   publicadores: Publicador[] = [];
   termoBusca: string = '';
+  publicadorExcluir: string = '';
+  publicadoSelecionado: Publicador = new Publicador("", "", false, "", "", "");
+  mensagemSucesso: boolean = false;
+  mensagemErro: boolean = false;
 
   constructor(private publicadorService: PublicadoresService){}
 
@@ -44,6 +48,18 @@ export class PublicadoresListaComponent {
         }
       );
     }
+  }
+
+  preparaDelecao(publicador: Publicador){
+    this.publicadoSelecionado = publicador;
+  }
+  excluirPublicador(){
+    this.publicadorService.excluir(this.publicadoSelecionado)
+      .subscribe(response => {
+         this.mensagemSucesso = true 
+         this.ngOnInit() 
+        }, 
+        erro => this.mensagemErro = true)
   }
   
 }

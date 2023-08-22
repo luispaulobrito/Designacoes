@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicadoresModule } from './publicadores/publicadores.module';
 import { PublicadoresService } from './shared/services/publicadores.service';
+import { RelatoriosModule } from './relatorios/relatorios.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PublicadoresService } from './shared/services/publicadores.service';
     HttpClientModule,
     AppRoutingModule,
     PublicadoresModule,
+    RelatoriosModule
   ],
   providers: [
     PublicadoresService

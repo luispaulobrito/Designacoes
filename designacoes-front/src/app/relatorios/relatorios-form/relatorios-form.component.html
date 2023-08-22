@@ -1,0 +1,66 @@
+<div class="container mt-3">
+    <h3>Novo Relatório</h3>
+    <form>
+        <div class="row">
+            <div class="form-group  col-md-6">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="ano">Ano</label>
+                <select class="form-select" id="ano" name="ano" [(ngModel)]="selectedYear">
+                    <option *ngFor="let year of yearsRange" [value]="year">{{ year }}</option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group col-md-3">
+                <label for="mes">Mês</label>
+                <select class="form-select" id="mes" name="mes" [(ngModel)]="selectedMonth">
+                    <option *ngFor="let mes of meses" [value]="mes.value">{{ mes.label }}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group col-md-2 mt-3 mb-3">
+            <input type="checkbox" class="form-check-input" id="pioneiro-auxiliar" name="pioneiro-auxiliar">
+            <label class="form-check-label custom-checkbox-label" for="pioneiro-auxiliar">Pioneiro Auxiliar</label>
+        </div>
+        
+        
+        <div class=" row mt-2 mb-2">
+            <div class="form-group col-md-2">
+                <label for="publicacoes">Publicações</label>
+                <input type="number" class="form-control" id="publicacoes" name="publicacoes">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="videos">Vídeos</label>
+                <input type="number" class="form-control" id="videos" name="videos">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="horas">Horas</label>
+                <input type="number" class="form-control" id="horas" name="horas">
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="form-group col-md-2">
+                <label for="revisitas">Revisitas</label>
+                <input type="number" class="form-control" id="revisitas" name="revisitas">
+            </div>
+            
+            <div class="form-group col-md-2">
+                <label for="estudos">Estudos</label>
+                <input type="number" class="form-control" id="estudos" name="estudos">
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="observacao">Observação</label>
+                <textarea class="form-control" id="observacao" name="observacao" rows="3"></textarea>
+            </div>
+        </div>
+        <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+</div>

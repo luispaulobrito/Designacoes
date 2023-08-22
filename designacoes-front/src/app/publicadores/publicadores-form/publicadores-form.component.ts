@@ -61,7 +61,6 @@ export class PublicadoresFormComponent {
         },
         error => {
           this.errors = error.error.error;
-          console.error(error);
         }
         );
       }

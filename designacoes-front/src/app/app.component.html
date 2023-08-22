@@ -29,7 +29,17 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-lateral" href="#">Relatórios</a>
+                        <a class="nav-link menu-lateral" data-bs-toggle="collapse" href="#relatoriosSubMenu" role="button" aria-expanded="false" aria-controls="relatoriosSubMenu">Relatórios</a>
+                        <div class="collapse" id="relatoriosSubMenu">
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="relatorios-form">Adicionar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="relatorios-lista">Cartões</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menu-lateral" href="#">Reuniões</a>

@@ -2,7 +2,7 @@ export class Publicador {
     id : number = 0;
     nome: string = "";  
     sexo: string = "";  
-    flBatismo: boolean = false;  
+    flBatismo: boolean = true;  
     perfil: string = "";  
     publicadorTipo: string = "";  
     observacao: string = "";  

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/publicadores/relatorios")
+@RequestMapping("/api/relatorios")
 @RequiredArgsConstructor
 public class RelatorioController {
     private final RelatorioService relatorioService;

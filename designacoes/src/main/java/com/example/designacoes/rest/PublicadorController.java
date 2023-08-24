@@ -17,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/publicadores")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class PublicadorController {
     private final PublicadorRepository repository;
     private final PublicadorService service;

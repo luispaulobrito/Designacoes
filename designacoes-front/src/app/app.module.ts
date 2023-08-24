@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PublicadoresModule } from './publicadores/publicadores.module';
 import { PublicadoresService } from './shared/services/publicadores.service';
 import { RelatoriosModule } from './relatorios/relatorios.module';
+import { RelatoriosService } from './shared/services/relatorios.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RelatoriosModule } from './relatorios/relatorios.module';
     RelatoriosModule
   ],
   providers: [
-    PublicadoresService
+    PublicadoresService,
+    RelatoriosService
   ],
   bootstrap: [AppComponent]
 })

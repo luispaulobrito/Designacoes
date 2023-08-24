@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +21,8 @@ public class RelatorioDTO {
 
     private Long ano;
 
+    private Boolean pioneiroAuxiliar;
+
     private Long publicacoes;
 
     private Long videos;
@@ -28,5 +32,7 @@ public class RelatorioDTO {
     private Long revisitas;
 
     private Long estudos;
+
+    private String observacao;
 
 }

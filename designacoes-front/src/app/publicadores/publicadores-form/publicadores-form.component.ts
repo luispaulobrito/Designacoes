@@ -23,7 +23,7 @@ export class PublicadoresFormComponent {
     private service: PublicadoresService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {
+    ) {
     this.publicador = new Publicador("", "", false, "", "", "");
   }
 

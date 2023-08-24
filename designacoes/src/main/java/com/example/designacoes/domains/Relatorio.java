@@ -30,6 +30,9 @@ public class Relatorio {
     private Long ano;
 
     @Column
+    private Boolean pioneiroAuxiliar;
+
+    @Column
     private Long publicacoes;
 
     @Column
@@ -43,4 +46,7 @@ public class Relatorio {
 
     @Column
     private Long estudos;
+
+    @Column
+    private String observacao;
 }

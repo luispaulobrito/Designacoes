@@ -13,5 +13,6 @@ public interface RelatorioMapper extends EntityMapper<RelatorioDTO, Relatorio>{
 
     @Override
     @Mapping(source = "publicador.id", target = "idPublicador")
+    @Mapping(source = "publicador.nome", target = "nomePublicador")
     RelatorioDTO toDto(Relatorio entity);
 }

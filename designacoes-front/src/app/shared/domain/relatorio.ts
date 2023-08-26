@@ -1,4 +1,5 @@
 export class Relatorio {
+    nomePublicador : string = '';
     id : number = 0;
     idPublicador : number = 0;
     mes : number = 0;
@@ -23,3 +24,5 @@ export class Relatorio {
        this.observacao = observacao;
      }
  } 
+
+  

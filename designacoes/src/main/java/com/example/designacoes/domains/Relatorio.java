@@ -1,6 +1,8 @@
 package com.example.designacoes.domains;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Data
+@Getter
+@Setter
 public class Relatorio {
 
     @Id

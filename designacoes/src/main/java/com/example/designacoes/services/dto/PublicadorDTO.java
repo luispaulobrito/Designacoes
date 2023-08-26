@@ -27,4 +27,6 @@ public class PublicadorDTO {
     private TipoPublicadorEnum publicadorTipo;
 
     private String observacao;
+
+    private RelatorioDTO relatorioDTO;
 }

@@ -7,4 +7,5 @@ public class ConstantesUtil {
     public static final String ERROR_TITLE = "Ocorreu um erro";
     public static final String PESSOA_NAO_ENCONTRADA = "Pessoa não encontrada";
     public static final String RELATORIO_NAO_ENCONTRADO = "Relatório não encontrado";
+    public static final String RELATORIO_JA_CADASTRADO = "Publicador já cadastrou um relatório esse mês";
 }

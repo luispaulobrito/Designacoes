@@ -30,6 +30,7 @@ export class PublicadoresService {
   getPublicadoresFiltrados(termo: string): Observable<Publicador[]> {
     return this.http.get<Publicador[]>(`${this.apiUrl}/filtro?termo=${termo}`);
   }
+  
   getPublicadorById(id: number) : Observable <Publicador>{
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }

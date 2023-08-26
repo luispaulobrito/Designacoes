@@ -17,6 +17,8 @@ public class RelatorioDTO {
 
     private Long idPublicador;
 
+    private String nomePublicador;
+
     private Long mes;
 
     private Long ano;

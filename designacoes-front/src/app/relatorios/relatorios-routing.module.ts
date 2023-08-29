@@ -5,6 +5,7 @@ import { RelatoriosListaComponent } from './relatorios-lista/relatorios-lista.co
 
 const routes: Routes = [
   {path: 'relatorios-form', component: RelatoriosFormComponent},
+  {path: 'relatorios-form/:id', component: RelatoriosFormComponent},
   {path: 'relatorios-lista', component: RelatoriosListaComponent},
 ];
 

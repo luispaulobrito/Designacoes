@@ -8,7 +8,7 @@ export class Publicador {
     perfil: string = "";  
     publicadorTipo: string = "";  
     observacao: string = ""; 
-    relatorioDTO: Relatorio = new Relatorio(0,0,false,0,0,0,0,0,''); 
+    relatorioDTO: Relatorio = new Relatorio('',0,0,false,0,0,0,0,0,''); 
  
     constructor(nome: string, sexo: string, flBatismo: boolean, perfil: string, publicadorTipo: string, observacao: string) {
        this.nome = nome;

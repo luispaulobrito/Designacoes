@@ -12,7 +12,8 @@ export class Relatorio {
     estudos : number = 0;
     observacao: string = "";  
  
-    constructor(mes: number, ano: number, pioneiroAuxiliar: boolean, publicacoes: number, videos: number, horas: number, revisitas: number, estudos: number, observacao: string) {
+    constructor(nomePublicador: string, mes: number, ano: number, pioneiroAuxiliar: boolean, publicacoes: number, videos: number, horas: number, revisitas: number, estudos: number, observacao: string) {
+       this.nomePublicador = nomePublicador;
        this.mes = mes;
        this.ano = ano;
        this.pioneiroAuxiliar = pioneiroAuxiliar;

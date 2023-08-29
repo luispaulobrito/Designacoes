@@ -16,8 +16,19 @@ export class RelatoriosService {
   salvar(relatorio: Relatorio) : Observable <Relatorio>{
     return this.http.post<Relatorio>(`${this.apiUrl}`, relatorio);
   }
-
+  
+  atualizar( relatorio : Relatorio ) : Observable<any>{
+    return this.http.put<Relatorio>(`${this.apiUrl}/${relatorio.id}`,relatorio);
+  }
   getRelatoriosPorMesEAno(ano: number, mes: number): Observable<Relatorio[]> {
     return this.http.get<Relatorio[]>(`${this.apiUrl}/?mes=${mes}&ano=${ano}`);
+  }
+
+  getRelatorioById(id: number) : Observable <Relatorio>{
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  excluir( relatorioDTO : Relatorio ) : Observable<any>{
+    return this.http.delete<Relatorio>(`${this.apiUrl}/${relatorioDTO.id}`);
   }
 }

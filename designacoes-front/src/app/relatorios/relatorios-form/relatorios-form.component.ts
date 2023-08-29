@@ -1,9 +1,11 @@
+import { Observable } from 'rxjs';
 import { RelatoriosService } from './../../shared/services/relatorios.service';
 import { Component } from '@angular/core';
 import { MesesOptions } from 'src/app/enum/meses.enum';
 import { Publicador } from 'src/app/shared/domain/publicador';
 import { Relatorio } from 'src/app/shared/domain/relatorio';
 import { PublicadoresService } from 'src/app/shared/services/publicadores.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-relatorios-form',
@@ -14,13 +16,6 @@ export class RelatoriosFormComponent {
 
   publicadores: Publicador[] = [];
   relatorio: Relatorio;
-
-  constructor(
-    private publicadoresService: PublicadoresService,
-    private relatoriosService: RelatoriosService) {
-    this.relatorio = new Relatorio(0, 0, false, 0, 0, 0, 0, 0, "");
-  }
-
   meses = MesesOptions;
   selectedMonth: number = 0;
   selectedYear: number = 0;
@@ -28,23 +23,69 @@ export class RelatoriosFormComponent {
   currentDate = new Date();
   success: boolean = false;
   errors: string = '';
+  id: number = 0;
 
-  onSubmit() {
-    this.relatoriosService.salvar(this.relatorio).subscribe(
-      response => {
-        this.success = true;
-        this.relatorio = new Relatorio(0, 0, false, 0, 0, 0, 0, 0, "");
-      },
-      error => {
-        this.errors = error.error.error;
-      }
-    );
+  constructor(
+    private publicadoresService: PublicadoresService,
+    private relatoriosService: RelatoriosService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.relatorio = new Relatorio('', 0, 0, false, 0, 0, 0, 0, 0, '');
   }
 
+
   ngOnInit(): void {
+    this.carregarDados();
     this.selecionarMes();
     this.selecionarAno();
     this.carregarPublicadores();
+  }
+
+  carregarDados(): void {
+    let params: Observable<Params> = this.activatedRoute.params;
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if (this.id) {
+        this.relatoriosService
+          .getRelatorioById(this.id)
+          .subscribe(
+            response => this.relatorio = response,
+            errorResponse => this.relatorio = new Relatorio('', 0, 0, false, 0, 0, 0, 0, 0, '')
+          );
+      }
+    });
+  }
+
+  adicionarObservacao() {
+    if (!this.relatorio.pioneiroAuxiliar) {
+      this.relatorio.observacao = 'PIONEIRO AUXILIAR'
+    } else {
+      this.relatorio.observacao = ''
+    }
+  }
+
+  onSubmit() {
+    if (this.id) {
+      this.relatoriosService.atualizar(this.relatorio).subscribe(
+        response => {
+          this.success = true;
+          this.relatorio = new Relatorio('', 0, 0, false, 0, 0, 0, 0, 0, '');
+        },
+        error => {
+          this.errors = 'Erro ao atualizar relatorio';
+        }
+      );
+    } else {
+      this.relatoriosService.salvar(this.relatorio).subscribe(
+        response => {
+          this.success = true;
+          this.relatorio = new Relatorio('', 0, 0, false, 0, 0, 0, 0, 0, '');
+        },
+        error => {
+          this.errors = error.error.error;
+        }
+      );
+    }
   }
 
   selecionarMes() {
@@ -74,5 +115,6 @@ export class RelatoriosFormComponent {
       }
     );
   }
-
 }
+
+

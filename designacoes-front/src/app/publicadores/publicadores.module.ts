@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -25,7 +26,8 @@ import { PublicadorTipoPipe } from '../pipes/publicador-tipo.pipe';
     CommonModule,
     PublicadoresRoutingModule,
     FormsModule,
-    AlertasModule
+    AlertasModule,
+    SharedModule
   ]
 })
 export class PublicadoresModule { }

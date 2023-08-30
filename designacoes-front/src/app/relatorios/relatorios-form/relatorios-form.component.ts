@@ -41,7 +41,7 @@ export class RelatoriosFormComponent {
     this.carregarPublicadores();
   }
 
-  carregarDados(): void {
+  carregarDados(){
     let params: Observable<Params> = this.activatedRoute.params;
     params.subscribe(urlParams => {
       this.id = urlParams['id'];

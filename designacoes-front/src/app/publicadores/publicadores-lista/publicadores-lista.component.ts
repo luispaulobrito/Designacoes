@@ -11,13 +11,17 @@ export class PublicadoresListaComponent {
   publicadores: Publicador[] = [];
   termoBusca: string = '';
   publicadorExcluir: string = '';
-  publicadoSelecionado: Publicador = new Publicador("", "", false, "", "", "");
+  publicadoSelecionado: Publicador = new Publicador();
   mensagemSucesso: boolean = false;
   mensagemErro: boolean = false;
 
   constructor(private publicadorService: PublicadoresService){}
 
   ngOnInit() {
+    this.getPublicadores();
+  }  
+
+  getPublicadores(){
     this.publicadorService.getPublicadores().subscribe(
       (data: Publicador[]) => {
         this.publicadores = data;
@@ -26,19 +30,9 @@ export class PublicadoresListaComponent {
         console.error(error);
       }
     );
-  }  
+  }
 
   filtrarPublicadores() {
-    if (this.termoBusca === '') {
-      this.publicadorService.getPublicadores().subscribe(
-        (data: Publicador[]) => {
-          this.publicadores = data;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    } else {
       this.publicadorService.getPublicadoresFiltrados(this.termoBusca).subscribe(
         (data: Publicador[]) => {
           this.publicadores = data;
@@ -47,17 +41,17 @@ export class PublicadoresListaComponent {
           console.error(error);
         }
       );
-    }
   }
 
   preparaDelecao(publicador: Publicador){
     this.publicadoSelecionado = publicador;
   }
+
   excluirPublicador(){
     this.publicadorService.excluir(this.publicadoSelecionado)
       .subscribe(response => {
          this.mensagemSucesso = true 
-         this.ngOnInit() 
+         this.getPublicadores(); 
         }, 
         erro => this.mensagemErro = true)
   }

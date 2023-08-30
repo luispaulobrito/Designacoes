@@ -64,8 +64,6 @@ export class RelatoriosListaComponent {
 
   preparaDelecao(relatorioDTO: Relatorio) {
     this.relatorioSelecionado = relatorioDTO;
-    console.log(this.relatorioSelecionado);
-
   }
 
   excluirRelatorio() {
@@ -77,8 +75,4 @@ export class RelatoriosListaComponent {
         erro => this.mensagemErro = true)
   }
 
-
-  restoreSelectionAndCallOnInit() {
-    this.ngOnInit();
-  }
 }

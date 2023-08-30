@@ -24,10 +24,14 @@ export class PublicadoresFormComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
     ) {
-    this.publicador = new Publicador("", "", false, "", "", "");
+    this.publicador = new Publicador();
   }
 
   ngOnInit(): void {
+    this.getPublicadores();
+  }
+
+  getPublicadores(){
     let params: Observable<Params> = this.activatedRoute.params;
     params.subscribe(urlParams => {
       this.id = urlParams['id'];
@@ -36,7 +40,7 @@ export class PublicadoresFormComponent {
           .getPublicadorById(this.id)
           .subscribe(
             response => this.publicador = response,
-            errorResponse => this.publicador = new Publicador("", "", false, "", "", "")
+            errorResponse => this.publicador = new Publicador()
           );
       }
     });
@@ -47,7 +51,7 @@ export class PublicadoresFormComponent {
       this.service.atualizar(this.publicador).subscribe(
         response => {
           this.success = true;
-          this.publicador = new Publicador("", "", false, "", "", ""); 
+          this.publicador = new Publicador(); 
         },
         error => {
           this.errors = ['Erro ao atualizar publicador'];
@@ -57,7 +61,7 @@ export class PublicadoresFormComponent {
       this.service.salvar(this.publicador).subscribe(
         response => {
           this.success = true;
-          this.publicador = new Publicador("", "", false, "", "", ""); 
+          this.publicador = new Publicador(); 
         },
         error => {
           this.errors = error.error.error;

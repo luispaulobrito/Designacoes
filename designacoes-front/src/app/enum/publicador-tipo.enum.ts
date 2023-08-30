@@ -18,5 +18,4 @@ export const PublicadorTipoOptions = [
     { value: PublicadorTipoEnum.PIONEIRO_AUXILIAR, label: PublicadorTipoEnumMapper[PublicadorTipoEnum.PIONEIRO_AUXILIAR]},
     { value: PublicadorTipoEnum.PIONEIRO_AUXILIAR_INDETERMINADO, label: PublicadorTipoEnumMapper[PublicadorTipoEnum.PIONEIRO_AUXILIAR_INDETERMINADO]},
     { value: PublicadorTipoEnum.PIONEIRO_REGULAR, label: PublicadorTipoEnumMapper[PublicadorTipoEnum.PIONEIRO_REGULAR]},
-
-]
+];

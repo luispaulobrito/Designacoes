@@ -1,22 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+  import { Pipe, PipeTransform } from '@angular/core';
+  import { PublicadorTipoEnum, PublicadorTipoEnumMapper } from '../enum/publicador-tipo.enum';
 
-@Pipe({
-  name: 'publicadorTipo'
-})
-export class PublicadorTipoPipe implements PipeTransform {
+  @Pipe({
+    name: 'publicadorTipo'
+  })
+  export class PublicadorTipoPipe implements PipeTransform {
 
-  transform(value: string): string {
-      switch (value) {
-        case 'PB':
-          return 'Publicador';
-        case 'PA':
-          return 'Pioneiro Auxiliar';
-        case 'PI':
-          return 'Pioneiro Auxiliar Indeterminado';
-        case 'PR':
-          return 'Pioneiro Regular';
-        default:
-          return value;
-      }
+    transform(value: string): string {
+      return PublicadorTipoEnumMapper[value as PublicadorTipoEnum];
     }
   }

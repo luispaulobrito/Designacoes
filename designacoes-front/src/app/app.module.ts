@@ -9,7 +9,6 @@ import { PublicadoresModule } from './publicadores/publicadores.module';
 import { PublicadoresService } from './shared/services/publicadores.service';
 import { RelatoriosModule } from './relatorios/relatorios.module';
 import { RelatoriosService } from './shared/services/relatorios.service';
-import { StatusBatismoIconesDirective } from './shared/diretivas/status-batismo-icones.directive';
 
 @NgModule({
   declarations: [

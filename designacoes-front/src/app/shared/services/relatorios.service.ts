@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Relatorio } from '../domain/relatorio';
+import { ResumoRelatorio } from '../domain/resumo-relatorio';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
@@ -22,6 +23,10 @@ export class RelatoriosService {
   }
   getRelatoriosPorMesEAno(ano: number, mes: number): Observable<Relatorio[]> {
     return this.http.get<Relatorio[]>(`${this.apiUrl}/?mes=${mes}&ano=${ano}`);
+  }
+
+  getResumoRelatorio(ano: number, mes: number): Observable<ResumoRelatorio[]> {
+    return this.http.get<ResumoRelatorio[]>(`${this.apiUrl}/resumo-relatorios?mes=${mes}&ano=${ano}`);
   }
 
   getRelatorioById(id: number) : Observable <Relatorio>{

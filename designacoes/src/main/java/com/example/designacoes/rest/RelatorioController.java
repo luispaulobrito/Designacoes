@@ -3,6 +3,7 @@ package com.example.designacoes.rest;
 import com.example.designacoes.services.RelatorioService;
 import com.example.designacoes.services.dto.PublicadorDTO;
 import com.example.designacoes.services.dto.RelatorioDTO;
+import com.example.designacoes.services.dto.ResumoRelatorioDTO;
 import com.example.designacoes.services.error.NegocioException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +21,16 @@ public class RelatorioController {
     public ResponseEntity<RelatorioDTO> obterRelatorioPorId(@PathVariable Long relatorioId){
         return ResponseEntity.ok(relatorioService.obterPorId(relatorioId));
     }
+    @GetMapping("/resumo-relatorios")
+    public List<ResumoRelatorioDTO> resumoRelatorios(@RequestParam("mes") Long mes, @RequestParam("ano") Long ano) {
+        return relatorioService.resumoRelatorios(mes, ano);
+    }
 
-//    @GetMapping()
-//    public ResponseEntity<List<RelatorioDTO>> filtrarRelatorioPorAnoEMes(@RequestParam Long ano, Long mes) {
-//        List<RelatorioDTO> relatoriosFiltrados = relatorioService.filtrarRelatorioPorAnoEMes(ano, mes);
-//        return ResponseEntity.ok(relatoriosFiltrados);
-//    }
     @GetMapping()
     public ResponseEntity<List<PublicadorDTO>> obterPublicadoresERelatoriosPorAnoEMes(@RequestParam Long ano, Long mes) {
         List<PublicadorDTO> relatoriosFiltrados = relatorioService.obterPublicadoresERelatoriosPorAnoEMes(ano, mes);
         return ResponseEntity.ok(relatoriosFiltrados);
     }
-
 
     @PostMapping()
     public ResponseEntity<RelatorioDTO> salvarRelatorio(@RequestBody RelatorioDTO relatorioDTO) throws NegocioException {

@@ -4,13 +4,13 @@ import { RelatoriosFormComponent } from './relatorios-form/relatorios-form.compo
 import { RelatoriosRoutingModule } from './relatorios-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RelatoriosListaComponent } from './relatorios-lista/relatorios-lista.component';
-
-
+import { RelatoriosResumoComponent } from './relatorios-resumo/relatorios-resumo.component';
 
 @NgModule({
   declarations: [
     RelatoriosFormComponent,
-    RelatoriosListaComponent
+    RelatoriosListaComponent,
+    RelatoriosResumoComponent
   ],
   imports: [
     CommonModule,

@@ -24,7 +24,6 @@
           <th scope="col">Batismo</th>
           <th scope="col">Perfil</th>
           <th scope="col">Tipo de Publicador</th>
-          <th scope="col">Observação</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
@@ -35,9 +34,8 @@
           <td [appStatusBatismoIcones]="publicador.flBatismo"></td>
           <td>{{ publicador.perfil | perfil }}</td>
           <td>{{ publicador.publicadorTipo | publicadorTipo }}</td>
-          <td>{{ publicador.observacao }}</td>
           <td class="text-center">
-            <button class="btn btn-primary btn-sm m-2" routerLink="/publicadores-form/{{ publicador.id }}">
+            <button class="btn btn-primary btn-sm me-2" routerLink="/publicadores-form/{{ publicador.id }}">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelecao"

@@ -12,7 +12,7 @@ export class PerfilPipe implements PipeTransform {
         case 'SM':
           return 'Servo Ministerial';
         case 'NP':
-          return '-';
+          return ' ';
         default:
           return value;
       }

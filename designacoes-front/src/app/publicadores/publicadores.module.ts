@@ -28,6 +28,9 @@ import { PublicadorTipoPipe } from '../pipes/publicador-tipo.pipe';
     FormsModule,
     AlertasModule,
     SharedModule
+  ],
+  exports: [
+    PublicadorTipoPipe
   ]
 })
 export class PublicadoresModule { }

@@ -2,7 +2,7 @@
     <h3>Resumo Mensal dos Relatórios</h3>
     <div class="mt-4">
       <div class="row mb-4">
-        <!-- <div class="form-group col-md-3">
+        <div class="form-group col-md-3">
           <label for="ano">Ano</label>
           <select class="form-select" id="ano" name="ano" [(ngModel)]="selectedYear">
             <option *ngFor="let year of yearsRange" [value]="year">{{ year }}</option>
@@ -17,31 +17,40 @@
         </div>
   
         <div class="form-group col-md-2 pt-4">
-          <button class="btn btn-primary" (click)="filtrarRelatoriosPorMesEAno()">Buscar</button>
-        </div> -->
+          <button class="btn btn-primary" (click)="filtrarResumoRelatoriosPorMesEAno()">Buscar</button>
+        </div>
   
       </div>
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
             <th scope="col">Tipo</th>
+            <th scope="col">Número de relatórios</th>
             <th scope="col">Publicações</th>
             <th scope="col">Videos</th>
             <th scope="col">Horas</th>
             <th scope="col">Revisitas</th>
             <th scope="col">Estudos Bíblicos</th>
-            <th scope="col">Observação</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let resumoRelatorio of resumoRelatorios">
-            <td>{{ resumoRelatorio.publicadorTipo }}</td>
+            <td>{{ resumoRelatorio.publicadorTipo | publicadorTipo }}</td>
+            <td>{{ resumoRelatorio.observacao }}</td>
             <td>{{ resumoRelatorio.publicacoes }}</td>
             <td>{{ resumoRelatorio.videos }}</td>
             <td>{{ resumoRelatorio.horas }}</td>
             <td>{{ resumoRelatorio.revisitas }}</td>
             <td>{{ resumoRelatorio.estudos }}</td>
-            <td>{{ resumoRelatorio.observacao }}</td>
+          </tr>
+          <tr>
+            <td>Total: </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

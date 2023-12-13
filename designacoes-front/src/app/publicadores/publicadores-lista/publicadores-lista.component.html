@@ -1,0 +1,71 @@
+<div class="container mt-3">
+  <h3>Lista de Publicadores</h3>
+
+  <div class="form-outline mt-4">
+    <input type="search" class="form-control" id="datatable-search-input" placeholder="Busca" [(ngModel)]="termoBusca"
+      (input)="filtrarPublicadores()">
+  </div>
+
+  <div>
+    <app-alerta-sucesso *ngIf="mensagemSucesso == true"
+      [mensagem]="'Publicador excluído com sucesso!'"></app-alerta-sucesso>
+
+    <div *ngIf="mensagemErro == true">
+      <app-alerta-erro [mensagem]="'Ocorreu um erro ao excluir o publicador.'"></app-alerta-erro>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Sexo</th>
+          <th scope="col">Batismo</th>
+          <th scope="col">Perfil</th>
+          <th scope="col">Tipo de Publicador</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let publicador of publicadores">
+          <td>{{ publicador.nome }}</td>
+          <td>{{ publicador.sexo | traduzirGenero }}</td>
+          <td [appStatusBatismoIcones]="publicador.flBatismo"></td>
+          <td>{{ publicador.perfil | perfil }}</td>
+          <td>{{ publicador.publicadorTipo | publicadorTipo }}</td>
+          <td class="text-center">
+            <button class="btn btn-primary btn-sm me-2" routerLink="/publicadores-form/{{ publicador.id }}">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelecao"
+              (click)="preparaDelecao(publicador)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="modalDelecao" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Excluir Publicador</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja excluir {{ publicadoSelecionado.nome }}?</p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="excluirPublicador()" data-bs-dismiss="modal" type="button"
+            class="btn btn-primary">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
